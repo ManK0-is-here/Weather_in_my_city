@@ -1,4 +1,3 @@
-from urllib import response
 import requests 
 from plyer import notification 
 
@@ -10,8 +9,8 @@ def get_weather(city: str = CITY, api_key: str = KEY_API)-> dict:
     Выполняет запрос к API и возвращает данные о погоде в виде словаря.
     """
     url = rf'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric&lang=ru'
-    response: requests.Response = requests.get(url)
-    return requests.json()
+    response = requests.get(url)
+    return response.json()
 
 
 def format_weather_message(weather_dict: dict) -> str:
@@ -30,3 +29,11 @@ def format_weather_message(weather_dict: dict) -> str:
     return (f"температура: {temp}, ощущается как: {feels_like}, описание: {description}")
 
 
+def notify_weather(message: str) -> None:
+
+    notification.notify(
+    title = "Погода в {CITY}",
+    message = format_weather_message(),
+    app_name = 'Weather',
+    app_icon = None
+    )
