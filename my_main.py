@@ -1,8 +1,10 @@
 import requests 
 from plyer import notification 
 
+
 CITY = "Череповец"
 KEY_API = "23496c2a58b99648af590ee8a29c5348"
+
 
 def get_weather(city: str = CITY, api_key: str = KEY_API)-> dict:
     """
@@ -14,6 +16,7 @@ def get_weather(city: str = CITY, api_key: str = KEY_API)-> dict:
 
 
 def format_weather_message(weather_dict: dict) -> str:
+
     """
     Получает данные из функции get_weather и форматирует их в удобочитаемое сообщение
     """
@@ -29,7 +32,10 @@ def format_weather_message(weather_dict: dict) -> str:
 
 
 def notify_weather(message: str) -> None:
-
+    
+    """
+    Уведомление
+    """
     notification.notify(
     title = f"Погода в {CITY}",
     message = message,
@@ -39,9 +45,11 @@ def notify_weather(message: str) -> None:
 
 
 def main() -> None:
+    # долго немог понять откуда берутся данные в предидущих функциях, но теперь всё встало на места когда увидел что мы их передаём через функцию main()
     weather_dict = get_weather()
     message = format_weather_message(weather_dict)
     notify_weather(message)
+
 
 if __name__ == "__main__":
     name: str == __name__
