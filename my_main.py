@@ -17,7 +17,6 @@ def format_weather_message(weather_dict: dict) -> str:
     """
     Получает данные из функции get_weather и форматирует их в удобочитаемое сообщение
     """
-    # weather_dict = get_weather()
 
     # температура
     temp = weather_dict['main']['temp']
@@ -32,8 +31,18 @@ def format_weather_message(weather_dict: dict) -> str:
 def notify_weather(message: str) -> None:
 
     notification.notify(
-    title = "Погода в {CITY}",
-    message = format_weather_message(),
+    title = f"Погода в {CITY}",
+    message = message,
     app_name = 'Weather',
     app_icon = None
     )
+
+
+def main() -> None:
+    weather_dict = get_weather()
+    message = format_weather_message(weather_dict)
+    notify_weather(message)
+
+if __name__ == "__main__":
+    name: str == __name__
+    print(name)
