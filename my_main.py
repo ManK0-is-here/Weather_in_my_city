@@ -51,6 +51,6 @@ def main() -> None:
     notify_weather(message)
 
 
+
 if __name__ == "__main__":
-    name: str == __name__
-    print(name)
+    main()   
